@@ -1,0 +1,161 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsthm, enumerate, graphicx}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{bm}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{float}
+\usepackage{graphics}
+\setlength{\marginparwidth}{2.15cm}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{epsfig}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[normalem]{ulem}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows, automata}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage[font=scriptsize]{subcaption}
+\usepackage{float}
+\usepackage[]{algorithm2e}
+\usepackage{environ}
+\usepackage{bbm}
+\usepackage{graphicx}
+\usepackage{titling}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{lipsum}
+\usepackage{lastpage}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{comment}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{marvosym}
+\usepackage{wrapfig}
+\usepackage{datetime}
+\usepackage[many]{tcolorbox}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wasysym}
+\usepackage{cancel}
+\usepackage{cprotect}
+\usepackage{listings}
+\usepackage{color}
+\usetikzlibrary{matrix}
+
+\newcommand{\blackcircle}{\tikz\draw[black,fill=black] (0,0) circle (1ex);}
+\renewcommand{\circle}{\tikz\draw[black] (0,0) circle (1ex);}
+
+\newtcolorbox[]{solution}[1][]{%
+    breakable,
+    enhanced,
+    colback=white,
+    title=Solution,
+    #1
+}
+
+
+% SOLUTION environment
+% \NewEnviron{soln}{
+% \leavevmode\color{red}\ignorespaces \textbf{Solution} \BODY }{}
+\NewEnviron{soln}[1]{
+\begin{solution}[#1]
+\leavevmode\color{red}\ignorespaces \BODY 
+\end{solution}
+}{}
+
+% QUESTION AUTHORS environment
+\NewEnviron{qauthor}{
+\leavevmode\color{blue}\ignorespaces \textbf{Author} \BODY}{}
+
+% SOLUTION environment
+\NewEnviron{qlearningobjective}{
+\leavevmode\color{blue}\ignorespaces \textbf{Learning Objective } \BODY }{}
+
+% TO ONLY SHOW HOMEWORK QUESTIONS, include following (else comment out):
+\RenewEnviron{soln}[1]{\begin{solution}[#1] \BODY \end{solution}}  % Use this for the handout tex
+\RenewEnviron{qauthor}{}
+\RenewEnviron{qlearningobjective}{}
+
+%\newcommand{\norm}[1]{\lVert #1 \rVert}
+%\newcommand{\st}{\mathrm{s.t.}}
+
+\makeatletter
+\newcommand{\removelatexerror}{\let\@latex@error\@gobble}
+\makeatother
+
+\newcommand{\argmax}{\mathop{\mathrm{argmax}}}
+\newcommand{\argmin}{\mathop{\mathrm{argmin}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Custom Math                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Custom box for highlights               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Define box and box title style
+\tikzstyle{mybox} = [fill=blue!10, very thick,
+    rectangle, rounded corners, inner sep=1em, inner ysep=1em]
+
+% \newcommand{\notebox}[1]{
+% \begin{tikzpicture}
+% \node [mybox] (box){%
+%     \begin{minipage}{\textwidth}
+%     #1
+%     \end{minipage}
+% };
+% \end{tikzpicture}%
+% }
+
+\NewEnviron{notebox}{
+\begin{tikzpicture}
+\node [mybox] (box){
+    \begin{minipage}{\textwidth}
+        \BODY
+    \end{minipage}
+};
+\end{tikzpicture}
+}
+
+\begin{document}
+\section*{}
+\begin{center}
+  \centerline{\textsc{\LARGE  Homework 2}}
+  \vspace{0.5em}
+  \centerline{\textsc{\LARGE Graphical Models}\footnote{Compiled on \today{} at \currenttime{}}}
+  \vspace{1em}
+  \textsc{\large CMU 10-707: Topics in Deep Learning (Spring 2022)} \\
+  \vspace{0.5em}
+  \url{https://deeplearning-cmu-10707-2022spring.github.io/} \\
+  \vspace{0.5em}
+  \centerline{OUT: Thursday, Feb 17th, 2022}
+  \vspace{0.5em}
+  \centerline{DUE: Thursday, March 3rd, 2022, 11:59pm}
+    \centerline{TAs: Minji Yoon, Zhili Feng, Kin G. Olivares}
+\end{center}
+
+\input{instructions.tex}
+\clearpage 
+\input{written_1.tex}
+\clearpage
+\input{written_2.tex}
+\clearpage
+\input{written_3.tex}
+\clearpage
+\input{written_4.tex}
+\clearpage
+\input{programming.tex}
+\clearpage
+\input{collaboration.tex}
+\clearpage
+
+\end{document}

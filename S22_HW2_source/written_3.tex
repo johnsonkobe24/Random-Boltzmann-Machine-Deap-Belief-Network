@@ -1,0 +1,24 @@
+\section*{Problem 3 (10 pts)}
+
+Consider the use of iterated conditional modes (ICM) to minimize the energy function (that we considered in class for image denoising example) given by:
+\begin{align*}
+    E(\textbf{x}, \textbf{y}) = h\sum_{i} x_i - \beta\sum_{i,j} x_i x_j - \gamma\sum_{i}x_i y_i
+\end{align*}
+where $x_i \in \{-1, 1\}$ is a binary variable denoting the state of pixel $i$ in the unknown noise-free image, $i$ and $j$ are indices of neighboring pixels, and $y_i \in \{-1, 1\}$ denotes the corresponding value of pixel $i$ in the observed noisy image.
+The joint distribution is defined as:
+\begin{align*}
+    p(\textbf{x}, \textbf{y}) = \frac{1}{Z} exp(-E(\textbf{x}, \textbf{y}))
+\end{align*}
+
+\begin{enumerate}
+    \item (5 pts) Write down an expression for the difference in the values of the energy associated with the two states of a particular variable $x_j$, with all other variables held fixed, and show that it depends only on quantities that are local $x_j$ in the graph.
+    
+    \item (5 pts) Consider a particular case of the energy function above in which the coefficients $\beta = h = 0$.
+    Show that the most probable configuration of the latent variables is given by $x_i = y_i$ for all $i$.
+\end{enumerate}
+
+\pagebreak
+
+\begin{soln}{height=\textheight}
+% Put your answer here.  Please make sure you complete your answers within the given size of the box.
+\end{soln}

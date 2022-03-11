@@ -1,0 +1,107 @@
+\section*{Programming (60 pts)}
+Two files, \texttt{rbm.py} and \texttt{dbn.py}, are provided. 
+Only \texttt{rbm.py} will be evaluated in autograder, but you need to implement both to answer all questions below. 
+You should read the instructions on top of these files, and the docstrings very carefully. 
+You can change anything as you see fit in \texttt{dbn.py}, as this file will not be autograded. 
+\textbf{Zip only \textit{rbm.py} file and upload the zip file to GradeScope as shown in Figure~\ref{fig:submission_example}.}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.35\linewidth]{images/programming_1.png}
+\caption{Submission Example.} 
+\label{fig:submission_example}
+\end{figure}
+
+As assistance through the programming assignment, we provided access to the \textcolor{blue}{hw2.ipynb} jupyter notebook, where the paths and dependencies are managed. The final submission will still be this pdf.
+
+\vspace{10mm}
+In this assignment, the reconstruction error refers to:
+\begin{equation}
+    \frac{1}{N}\sum_{i=1}^{N}\sqrt{\sum_{j=1}^{m}(x_{ij}-\tilde{x}_{ij})^{2}}
+\end{equation}
+where N is the number of samples in training set or validation set, m is the dimension of data vector, $x$ is the input vector and $\tilde{x}$ is the reconstructed vector. Perform Gibbs sampling with $k=1$ to obtain $\tilde{x}$. 
+
+We will build and train generative models (RBM and DBN) for MNIST dataset, which are images of 10 handwritten numbers. The images are 28 by 28, but they will be represented as 1D vectors with length 784. Data for training, validation and testing can be found in \texttt{digitstrain.txt}, \texttt{digitsvalid.txt}, and \texttt{digitstest.txt}.
+
+For training, choose a reasonable learning rate (e.g. 0.1 or 0.01) and use your own judgement to decide when to stop training (i.e number of epochs or convergence criteria). 
+
+
+\clearpage
+\subsection*{1. RBM task}
+Initialize an RBM with 100 hidden units. 
+
+\paragraph{a.1)} \textbf{Autograder (20 points)}
+
+This question only requires your \texttt{rbm.py} Autograder submission.
+
+\paragraph{a.2)} \textbf{Training(5 points)}
+
+Try the RBM model with gibbs steps $k$ as 1, 3, and 5. For each $k$, plot reconstruction error against the epoch number for training and validation on one plot. So you should include 3 plots here, each contains two curves for training and validation. How does $k$ affect training convergence of the model?
+
+\begin{soln}{height=5cm}
+% Put your answer here.  Please make sure you complete your answers within the given size of the box.
+\end{soln}
+
+\paragraph{b)} \textbf{Visualizing and understanding learned parameters (5 points)}
+
+Choose one model that you like, and visualize its learned $W$ as 100 images that are 28-by-28 in pixel. Plot all of them in one figure. What are being plotted here? Do they exhibit any structure?
+
+\begin{soln}{height=5cm}
+% Put your answer here.  Please make sure you complete your answers within the given size of the box.
+\end{soln}
+
+% \paragraph{c) Reconstruction} \textbf{(10 points)}
+
+% To qualitatively test the model performance, plot 100 pairs of original and reconstructed images as comparison. 
+% To reconstruct, feed a real sample from test set into the model as visible vector, generate a new sample for visible vector as the reconstruction by 1 step of gibbs sampling. 
+% % Plot 50 pairs of original and reconstructed images, which are 100 images, in 10 lines in total, with 5 pairs each line. 
+% % On the 1st line, plot 5 pairs for the digit \textbf{1}, and digit \textbf{2} for the 2nd line, etc. 
+
+% \begin{tcolorbox}[fit,height=4cm, width=16cm, blank, borderline={1pt}{-2pt},nobeforeafter]
+% \begin{soln}
+% \end{soln}
+% \end{tcolorbox}
+
+\paragraph{c) Generation} \textbf{(5 points)}
+
+Set $k>1000$ for this task. Display the 100 generated samples for digit images in one figure. Do they look like handwritten digits? What if you retrain your RBM on only 3 digits, say $\textbf{1, 2}$ and $\textbf{3}$? If you train with $k=1$ vs $k=5$, do you see a difference in generated figures?
+
+\begin{soln}{height=5cm}
+% Put your answer here.  Please make sure you complete your answers within the given size of the box.
+\end{soln}
+
+\paragraph{d) Conditional generation} \textbf{(5 points)}
+
+Only reveal the top half of MNIST images (data generation code is provided to you), and use the RBM to reconstruct the bottom half of the image. Note here when you do gibbs sampling, when you sample $\bf v$ condition on $\bf h$, part of $\bf v$ is known for sure. You need to inject these known value to the newly sampled $\bf v$. 
+
+\begin{soln}{height=5cm}
+% Put your answer here.  Please make sure you complete your answers within the given size of the box.
+\end{soln}
+
+\paragraph{e) Supervised learning with RBM} \textbf{(10 points)}
+
+Take the RBM you have trained and initialize a 2-layer neural network, of which the first layer's weights are initialized using the RBM's weight. Compare the training trajectory of this RBM-initialized network with a randomly initialized network. Does the RBM-initialized network converge faster? Plot the training loss of these two networks in one figure.
+
+\begin{soln}{height=5cm}
+% Put your answer here.  Please make sure you complete your answers within the given size of the box.
+\end{soln}
+
+
+\subsection*{2. DBN task}
+Truncate our dataset and only retain images of digits \textbf{7}, \textbf{8}, and \textbf{9}.
+Build a DBN with two hidden layers with 500 and 784 units respectively, so there are two RBMs with 500 and 784 hidden units. 
+
+\paragraph{a) Training} \textbf{(5 points)}
+Training this DBN with gibbs steps $k=3$. For each RBM, plot reconstruction error against the epoch number for training and validation on one plot. So you should include 2 plots here, each contains two curves for training and validation.
+
+\begin{soln}{height=5cm}
+% Put your answer here.  Please make sure you complete your answers within the given size of the box.
+\end{soln}
+
+\paragraph{b) Generation} \textbf{(5 points)}
+
+Set $k>1000$ for this task. Display the 100 generated samples for digit images in one figure. Do they look like handwritten digits? 
+
+\begin{soln}{height=5cm}
+% Put your answer here.  Please make sure you complete your answers within the given size of the box.
+\end{soln}
